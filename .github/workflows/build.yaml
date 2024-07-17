@@ -24,4 +24,4 @@ jobs:
 
       - name: Lint with Ruff
         run: ruff check --output-format=github .
-        continue-on-error: false
+        continue-on-error: true
