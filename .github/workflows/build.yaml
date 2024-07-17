@@ -25,3 +25,35 @@ jobs:
       - name: Lint with Ruff
         run: ruff check --output-format=github .
         continue-on-error: true
+
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: 'python'
+          build-mode: 'none'
+          queries: security-and-quality
+
+      - name: Perform CodeQL Analysis
+        id: codeql_analyze
+        uses: github/codeql-action/analyze@v3
+        with:
+          output: ./codeql-results
+
+      # (Optional) Upload SARIF file as an artifact
+      - name: Upload SARIF file
+        uses: actions/upload-artifact@v3
+        with:
+          name: codeql-sarif
+          path: ./codeql-results/**/*.sarif
+
+      # Example step to process the SARIF file
+      # This is a placeholder for your actual processing script
+      - name: Process SARIF Output
+        run: |
+          echo "Process SARIF files here"
+          # Example: ls -l ./codeql-results
+          # Replace the above with your actual processing commands
