@@ -32,19 +32,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
           languages: 'python'
           build-mode: 'none'
           queries: security-and-quality
-          upload: 'never'
 
       - name: Perform CodeQL Analysis
         id: codeql_analyze
         uses: github/codeql-action/analyze@v3
         with:
+          upload: 'never'
           output: ./codeql-results
 
       # (Optional) Upload SARIF file as an artifact
