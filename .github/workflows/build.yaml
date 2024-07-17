@@ -38,7 +38,7 @@ jobs:
         with:
           languages: 'python'
           build-mode: 'none'
-          queries: security-and-quality
+          queries: security-extended
 
       - name: Perform CodeQL Analysis
         id: codeql_analyze
