@@ -55,7 +55,9 @@ jobs:
 
       # Example step to process the SARIF file
       # This is a placeholder for your actual processing script
-      - name: Process Sarif
-        run: |
-          echo "Process SARIF files here"
-          ls -a ./codeql-results
+      - name: SARIF Quality Gate Check
+        uses: maurirohling/sarif-quality-gate-action@v1
+        with:
+          sarif-file-path: ./codeql-results/python.sarif
+          max-errors: 0
+          max-warnings: 5
