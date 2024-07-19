@@ -55,7 +55,7 @@ jobs:
 
       # Example step to process the SARIF file
       # This is a placeholder for your actual processing script
-      - uses: maurirohling/sarif-quality-gate-action@main
+      - name: Process Sarif
         run: |
           echo "Process SARIF files here"
           ls -a ./codeql-results
